@@ -1,0 +1,22 @@
+{% extends "cloakroom/base.html" %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+    {% if label_list %}
+        <ul class="label-manager">
+        {% for label in label_list %}
+            <li>
+                <a href="{% url 'cloakroom:update-label' label.pk %}">
+                    <div>
+                        <p>{{ label.number }}</p>
+                        <p>{{ label.state|lower }}</p>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ни одного номерка нет!</p>
+    {% endif %}
+{% endblock content %}
