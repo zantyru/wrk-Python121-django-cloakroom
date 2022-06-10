@@ -8,7 +8,7 @@
         <div class="card-body">
             <h4 class="card-title">Войти в свой аккаунт</h4>
 
-            <form action="" method="post">
+            <form method="post">
                 {% csrf_token %}
                 <input type="hidden" name="next" value="{{ next }}">
                 {{ form|crispy }}

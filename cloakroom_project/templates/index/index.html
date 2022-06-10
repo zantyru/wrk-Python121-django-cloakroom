@@ -3,9 +3,16 @@
 {% block title %}Система "Гардероб"{% endblock %}
 
 {% block content %}
-    <h1>Добро пожаловать в система &laquo;Гардероб&raquo;</h1>
-    <p><a href="{% url 'accounts:login' %}">Войти</a></p>
-    <p><a href="{% url 'accounts:password_change' %}">Сменить пароль</a></p>
-    <p><a href="{% url 'accounts:password_reset' %}">Восстановить пароль</a></p>
-    <p><a href="{% url 'accounts:logout' %}">Выйти</a></p>
+    <h1>Система &laquo;Гардероб&raquo;</h1>
+    <p>Добро пожаловать, {{ user.username|default:'Гость' }}</p>
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'accounts:password_change' %}">Сменить пароль</a></p>
+        <p><a href="{% url 'accounts:logout' %}">Выйти</a></p>
+    {% else %}
+        <p><a href="{% url 'accounts:login' %}">Войти</a></p>
+        <p><a href="{% url 'accounts:password_reset' %}">Восстановить пароль</a></p>
+        <p><a href="{% url 'accounts:register' %}">Регистрация</a></p>
+    {% endif %}
+    <hr>
+    <p><a href="{% url 'cloakroom:index' %}">Перейти</a> на панель управления номерками.</p>
 {% endblock %}

@@ -1,12 +1,17 @@
 from django.shortcuts import render, reverse
 from django.shortcuts import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from .models import (
     Label
 )
 
 
-class IndexView(generic.ListView):
+class IndexView(LoginRequiredMixin, generic.ListView):
+
+    login_url = "/accounts/login/"  # reverse("accounts:login")
+    redirect_field_name = "redirect_to"
+
     template_name = "cloakroom/index.html"
     model = Label
     context_object_name = "label_list"
@@ -18,7 +23,10 @@ class IndexView(generic.ListView):
         return Label.objects.order_by('number')
 
 
-class UpdateLabelView(generic.View):  #@TODO generic.FormView
+class UpdateLabelView(LoginRequiredMixin, generic.View):  #@TODO generic.FormView
+
+    login_url = "/accounts/login/"  # reverse("accounts:login")
+    redirect_field_name = "redirect_to"
 
     def get(self, request, label_id):
 
