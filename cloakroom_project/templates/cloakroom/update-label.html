@@ -1,9 +1,9 @@
-{% extends "cloakroom/base.html" %}
+{% extends "base.html" %}
 
-{% block title %}{{ title }}{% endblock title %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    {% if label %}
+{% if label %}
     <form action="{{ update_type_url }}" method="post">
         {% csrf_token %}
         <input type="text" name="label-number" placeholder="Введите номерок">
@@ -11,5 +11,5 @@
         <p>{{ label.number }}</p>
         <p>{{ label.state }}</p>
     </form>
-    {% endif %}
-{% endblock content %}
+{% endif %}
+{% endblock %}

@@ -1,9 +1,15 @@
-{% extends "base.html" %}
+{% extends "registration/base.html" %}
 
 {% block title %}Выход из аккаунта{% endblock %}
 
-{% block content %}
-    <p>Вы вышли из аккаунта!</p>
-    <a href="{% url 'accounts:login' %}">Войти заново</a>
-    <a href="{% url 'index' %}">На главную</a>
+{% block inner_content %}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Вы вышли из аккаунта!</h4>
+
+        <a href="{% url 'accounts:login' %}">Войти заново</a>
+        <a href="{% url 'index' %}">На главную</a>
+
+    </div>
+</div>
 {% endblock %}

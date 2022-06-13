@@ -3,7 +3,8 @@
 {% block title %}Система "Гардероб"{% endblock %}
 
 {% block content %}
-    <h1>Система &laquo;Гардероб&raquo;</h1>
+    <h1 class="text-center">Система &laquo;Гардероб&raquo;</h1>
+    <hr>
     <p>Добро пожаловать, {{ user.username|default:'Гость' }}</p>
     {% if user.is_authenticated %}
         <p><a href="{% url 'accounts:password_change' %}">Сменить пароль</a></p>
